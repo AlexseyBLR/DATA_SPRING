@@ -7,6 +7,7 @@ import net.proselyte.springsecurityapp.validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -77,12 +78,37 @@ public class UserController {
     }
 
     @RequestMapping(value = "/select", method = RequestMethod.GET)
-    public  String selectRoleForAdmin(Model model){
+    public String selectRoleForAdmin(Model model) {
         return "selectAdminRole";
     }
 
     @RequestMapping(value = "/main", method = RequestMethod.GET)
-    public  String redirectToUserMode(Model model){
+    public String redirectToUserMode(Model model) {
         return "main";
     }
+
+    @RequestMapping(value = "/goToRegistration", method = RequestMethod.GET)
+    public String goToRegistration(ModelMap modelMap) {
+        modelMap.addAttribute("newUserFirstRegistration", new User());
+        return "secondRegistration";
+    }
+
+    @RequestMapping(value = "/registered", method = RequestMethod.POST)
+    public String registeredFirst(@ModelAttribute("newUserFirstRegistration") User userFirst, BindingResult bindingResult, Model model) {
+
+        userService.editUserInfo(userFirst.getUsername(), userFirst);
+        System.out.println(userFirst);
+        model.addAttribute("newUserSecondRegistration", userFirst);
+        return "lastRegistration";
+    }
+
+    @RequestMapping(value = "/registeredLast", method = RequestMethod.POST)
+    public String registeredSecond(@ModelAttribute("newUserSecondRegistration") User userSecond, BindingResult bindingResult, Model model) {
+
+        System.out.println(userSecond);
+        userService.editUserResult(userSecond.getUsername(), userSecond);
+//        model.addAttribute("newUserFirstRegistration", userSecond);
+        return "main";
+    }
+
 }

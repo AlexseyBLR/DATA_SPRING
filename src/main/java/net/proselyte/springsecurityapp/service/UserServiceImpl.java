@@ -9,6 +9,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -41,6 +42,42 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findByUsername(String username) {
-        return userDao.findByUsername(username);
+        return userDao.findUserByUsername(username);
     }
+
+    @Override
+    public void delete(User user) {
+        userDao.delete(user);
+    }
+
+    @Override
+    public void editUserInfo(String username, User oldUser) {
+        User userForUpdate = userDao.findUserByUsername(username);
+        userForUpdate.setFirstname(oldUser.getFirstname());
+        userForUpdate.setLastname(oldUser.getLastname());
+        userForUpdate.setPatronymic( oldUser.getPatronymic());
+        userForUpdate.setAge(oldUser.getAge());
+        userForUpdate.setSex(oldUser.getSex());
+        userDao.saveAndFlush(userForUpdate);
+    }
+
+    @Override
+    public void editUserResult(String username, User oldUser) {
+        System.out.println(userDao.findUserByUsername(username).getUsername());
+        User userForUpdate = userDao.findUserByUsername(username);
+        userForUpdate.setProfile(oldUser.getProfile());
+        userForUpdate.setMathResult(oldUser.getMathResult());
+        userForUpdate.setPhysResult(oldUser.getPhysResult());
+        userForUpdate.setLangResult( oldUser.getLangResult());
+        userForUpdate.setHimResult(oldUser.getHimResult());
+        userForUpdate.setBiolResult(oldUser.getBiolResult());
+        userForUpdate.setEnglResult(oldUser.getEnglResult());
+        userDao.saveAndFlush(userForUpdate);
+    }
+
+    @Override
+    public List<User> getAll() {
+        return userDao.findAll();
+    }
+
 }
