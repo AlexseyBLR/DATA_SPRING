@@ -7,11 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="SpringData" />
-        <module name="SpringSecurityApp" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="SpringData" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
 </project>
