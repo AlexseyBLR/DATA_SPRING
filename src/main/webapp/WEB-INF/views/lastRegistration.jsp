@@ -113,12 +113,12 @@
             <form action="/registeredLast" method="post">
                 <input type="submit" value="Save" class="btn btn-lg btn-primary btn-block"/>
             </form>
-            <%--<form action="/goToRegistration" method="get">--%>
-                <%--<input type="submit" value="Back" class="btn btn-lg btn-warning btn-block"/>--%>
-            <%--</form>--%>
-            <%--<form action="/main" method="get">--%>
-                <%--<input type="submit" value="Cancel" class="btn btn-lg btn-danger btn-block"/>--%>
-            <%--</form>--%>
+            <form action="/goToRegistration" method="get">
+                <input type="submit" value="Back" class="btn btn-lg btn-warning btn-block"/>
+            </form>
+            <form action="/main" method="get">
+                <input type="submit" value="Cancel" class="btn btn-lg btn-danger btn-block"/>
+            </form>
         </div>
 
     </form:form>
