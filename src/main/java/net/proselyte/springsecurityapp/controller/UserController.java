@@ -3,6 +3,8 @@ package net.proselyte.springsecurityapp.controller;
 import net.proselyte.springsecurityapp.model.User;
 import net.proselyte.springsecurityapp.service.SecurityService;
 import net.proselyte.springsecurityapp.service.UserService;
+import net.proselyte.springsecurityapp.validator.UserInfoValidator;
+import net.proselyte.springsecurityapp.validator.UserResultValidator;
 import net.proselyte.springsecurityapp.validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,6 +33,12 @@ public class UserController {
 
     @Autowired
     private UserValidator userValidator;
+
+    @Autowired
+    private UserInfoValidator userInfoValidator;
+
+    @Autowired
+    private UserResultValidator userResultValidator;
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public String registration(Model model) {
@@ -94,20 +102,27 @@ public class UserController {
     }
 
     @RequestMapping(value = "/registered", method = RequestMethod.POST)
-    public String registeredFirst(@ModelAttribute("newUserFirstRegistration") User userFirst, BindingResult bindingResult, Model model) {
+    public String registeredFirst(@ModelAttribute("newUserFirstRegistration") User newUserFirstRegistration, BindingResult bindingResult, Model model) {
 
-        userService.editUserInfo(userFirst.getUsername(), userFirst);
-        System.out.println(userFirst);
-        model.addAttribute("newUserSecondRegistration", userFirst);
+        userInfoValidator.validate(newUserFirstRegistration, bindingResult);
+        if (bindingResult.hasErrors()) {
+            return "secondRegistration";
+        }
+
+        userService.editUserInfo(newUserFirstRegistration.getUsername(), newUserFirstRegistration);
+        model.addAttribute("newUserSecondRegistration", newUserFirstRegistration);
         return "lastRegistration";
     }
 
     @RequestMapping(value = "/registeredLast", method = RequestMethod.POST)
-    public String registeredSecond(@ModelAttribute("newUserSecondRegistration") User userSecond, BindingResult bindingResult, Model model) {
+    public String registeredSecond(@ModelAttribute("newUserSecondRegistration") User newUserSecondRegistration, BindingResult bindingResult, Model model) {
 
-        System.out.println(userSecond);
-        userService.editUserResult(userSecond.getUsername(), userSecond);
-//        model.addAttribute("newUserFirstRegistration", userSecond);
+        userResultValidator.validate(newUserSecondRegistration, bindingResult);
+        if (bindingResult.hasErrors()) {
+            return "lastRegistration";
+        }
+        userService.editUserResult(newUserSecondRegistration.getUsername(), newUserSecondRegistration);
+        model.addAttribute("userInfo", newUserSecondRegistration);
         return "main";
     }
 

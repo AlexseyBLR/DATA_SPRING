@@ -55,7 +55,7 @@ public class UserServiceImpl implements UserService {
         User userForUpdate = userDao.findUserByUsername(username);
         userForUpdate.setFirstname(oldUser.getFirstname());
         userForUpdate.setLastname(oldUser.getLastname());
-        userForUpdate.setPatronymic( oldUser.getPatronymic());
+        userForUpdate.setPatronymic(oldUser.getPatronymic());
         userForUpdate.setAge(oldUser.getAge());
         userForUpdate.setSex(oldUser.getSex());
         userDao.saveAndFlush(userForUpdate);
@@ -63,12 +63,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void editUserResult(String username, User oldUser) {
-        System.out.println(userDao.findUserByUsername(username).getUsername());
         User userForUpdate = userDao.findUserByUsername(username);
         userForUpdate.setProfile(oldUser.getProfile());
         userForUpdate.setMathResult(oldUser.getMathResult());
         userForUpdate.setPhysResult(oldUser.getPhysResult());
-        userForUpdate.setLangResult( oldUser.getLangResult());
+        userForUpdate.setLangResult(oldUser.getLangResult());
         userForUpdate.setHimResult(oldUser.getHimResult());
         userForUpdate.setBiolResult(oldUser.getBiolResult());
         userForUpdate.setEnglResult(oldUser.getEnglResult());
