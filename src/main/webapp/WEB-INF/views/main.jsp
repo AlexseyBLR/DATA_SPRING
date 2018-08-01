@@ -22,21 +22,24 @@
 </head>
 <body>
 
-<div class="container">
+<div>
 
+<div class="container">
 
     <c:if test="${pageContext.request.userPrincipal.name != null}">
         <form id="logoutForm" method="POST" action="${contextPath}/logout">
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         </form>
 
-        <h2>Welcome ${pageContext.request.userPrincipal.name} | <a onclick="document.forms['logoutForm'].submit()" class="btn btn-danger">Logout</a>
+        <h2>Welcome ${pageContext.request.userPrincipal.name} | <a onclick="document.forms['logoutForm'].submit()"
+                                                                   class="btn btn-danger">Logout</a>
         </h2>
     </c:if>
 
     <c:if test="${pageContext.request.userPrincipal.name eq 'meleschenya1997@gmail.com'}">
         <form action="/select" method="get" class="form-signin">
-            <button type="submit" style="font-weight: bold;" class="btn btn-lg btn-primary btn-block">SELECT MODE</button>
+            <button type="submit" style="font-weight: bold;" class="btn btn-lg btn-primary btn-block">SELECT MODE
+            </button>
         </form>
     </c:if>
 

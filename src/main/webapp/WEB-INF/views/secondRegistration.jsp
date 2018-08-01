@@ -27,18 +27,19 @@
 <div class="container">
     <form:form action="/registered" method="POST" modelAttribute="newUserFirstRegistration" class="form-signin">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-        <h2 class="form-signin-heading">Add info about yourself</h2>
+        <h2 class="form-signin-heading" style="width: 310px;">Add info about yourself</h2>
         <input type="hidden" value="${pageContext.request.userPrincipal.name}" name="username"/>
-
+        
         <spring:bind path="firstname">
+            <label>First name</label>
             <div class="form-group ${status.error ? 'has-error' : ''}">
                 <form:input type="text" path="firstname" class="form-control" placeholder="First name"
-                            autofocus="true"/>
-                <form:errors path="firstname">
-                </form:errors>
+                            autofocus="true"></form:input>
+                <form:errors path="firstname"></form:errors>
             </div>
         </spring:bind>
         <spring:bind path="lastname">
+            <label>Last name</label>
             <div class="form-group ${status.error ? 'has-error' : ''}">
                 <form:input type="text" path="lastname" class="form-control" placeholder="Last name"
                             autofocus="true"/>
@@ -47,6 +48,7 @@
             </div>
         </spring:bind>
         <spring:bind path="patronymic">
+            <label>Patronymic</label>
             <div class="form-group ${status.error ? 'has-error' : ''}">
                 <form:input type="text" path="patronymic" class="form-control" placeholder="Patronymic"
                             autofocus="true"/>
@@ -55,6 +57,7 @@
             </div>
         </spring:bind>
         <spring:bind path="age">
+            <label>Age</label>
             <div class="form-group ${status.error ? 'has-error' : ''}">
                 <form:input type="text" path="age" class="form-control" placeholder="Age"
                             autofocus="true"/>
@@ -64,6 +67,7 @@
         </spring:bind>
         <spring:bind path="sex">
             <div class="form-group ${status.error ? 'has-error' : ''}">
+                <label>Select your sex:</label>
                 <form:select path="sex" class="form-control">
                     <option value="male">Male</option>
                     <option value="female">Female</option>
@@ -71,11 +75,11 @@
             </div>
         </spring:bind>
 
+
         <div class="form-group">
             <form action="/registered" method="post">
                 <input type="submit" value="Save" class="btn btn-lg btn-primary btn-block"/>
             </form>
-
             <form action="/main" method="get">
                 <input type="submit" value="cancel" class="btn btn-lg btn-danger btn-block"/>
             </form>
