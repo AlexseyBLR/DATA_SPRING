@@ -3,6 +3,7 @@ package net.proselyte.springsecurityapp.validator;
 import net.proselyte.springsecurityapp.model.User;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
+import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 import java.util.regex.Pattern;
@@ -23,6 +24,11 @@ public class UserResultValidator extends AbstractValidator implements Validator,
     @Override
     public void validate(Object o, Errors errors) {
         User user = (User) o;
+
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "certResult", "Required");
+        if(!validate(RESULT_PATTERN, user.getCertResult())){
+            errors.rejectValue("certResult", "Correct.userSecond.result");
+        }
 
         if(!validate(RESULT_PATTERN, user.getLangResult())){
             errors.rejectValue("langResult", "Correct.userSecond.result");

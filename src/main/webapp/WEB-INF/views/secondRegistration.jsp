@@ -29,7 +29,9 @@
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         <h2 class="form-signin-heading" style="width: 310px;">Add info about yourself</h2>
         <input type="hidden" value="${pageContext.request.userPrincipal.name}" name="username"/>
-        
+
+        ${newUserSecondRegistration}
+
         <spring:bind path="firstname">
             <label>First name</label>
             <div class="form-group ${status.error ? 'has-error' : ''}">

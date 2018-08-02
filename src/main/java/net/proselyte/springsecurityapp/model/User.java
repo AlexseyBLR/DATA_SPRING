@@ -45,6 +45,9 @@ public class User {
     @Column(name = "profile")
     private String profile;
 
+    @Column(name = "certResult")
+    private String certResult;
+
     @Column(name = "mathResult")
     private String mathResult;
 
@@ -204,6 +207,14 @@ public class User {
         this.englResult = englResult;
     }
 
+    public String getCertResult() {
+        return certResult;
+    }
+
+    public void setCertResult(String certResult) {
+        this.certResult = certResult;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -215,6 +226,7 @@ public class User {
                 ", age='" + age + '\'' +
                 ", sex='" + sex + '\'' +
                 ", profile='" + profile + '\'' +
+                ", certResult='" + certResult + '\'' +
                 ", mathResult='" + mathResult + '\'' +
                 ", physResult='" + physResult + '\'' +
                 ", langResult='" + langResult + '\'' +
