@@ -65,6 +65,7 @@ public class UserServiceImpl implements UserService {
     public void editUserResult(String username, User oldUser) {
         User userForUpdate = userDao.findUserByUsername(username);
         userForUpdate.setProfile(oldUser.getProfile());
+        userForUpdate.setCertResult(oldUser.getCertResult());
         userForUpdate.setMathResult(oldUser.getMathResult());
         userForUpdate.setPhysResult(oldUser.getPhysResult());
         userForUpdate.setLangResult(oldUser.getLangResult());

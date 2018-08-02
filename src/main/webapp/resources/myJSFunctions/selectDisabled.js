@@ -2,61 +2,96 @@ function onChange() {
     var selectBox = document.getElementById('profile');
     var value = selectBox.options[selectBox.selectedIndex].value;
 
-    if(value=='mathphys'){
-        document.getElementById('mathResult').disabled = false;
-        document.getElementById('physResult').disabled = false;
+    var certResult = document.getElementById('cert');
+    var mathResult = document.getElementById('math');
+    var physResult = document.getElementById('phys');
+    var langResult = document.getElementById('lang');
+    var biolResult = document.getElementById('biol');
+    var himResult = document.getElementById('him');
+    var englResult = document.getElementById('engl');
+    var buttonSave = document.getElementById('buttonSave');
 
-        document.getElementById('himResult').disabled = true;
-        document.getElementById('biolResult').disabled = true;
-        document.getElementById('englResult').disabled = true;
+    if (value == 'chose') {
 
-        document.getElementById('b1').disabled = false;
-        document.getElementById('b2').disabled = false;
-        document.getElementById('b3').disabled = false;
-        document.getElementById('langResult').disabled = false;
-    }
-    if(value=='himbio'){
-        document.getElementById('himResult').disabled = false;
-        document.getElementById('biolResult').disabled = false;
-
-        document.getElementById('mathResult').disabled = true;
-        document.getElementById('physResult').disabled = true;
-        document.getElementById('englResult').disabled = true;
-
-        document.getElementById('b1').disabled = false;
-        document.getElementById('b2').disabled = false;
-        document.getElementById('b3').disabled = false;
-        document.getElementById('langResult').disabled = false;
-    }
-    if(value=='mathlang'){
-        document.getElementById('mathResult').disabled = false;
-        document.getElementById('englResult').disabled = false;
-
-        document.getElementById('physResult').disabled = true;
-        document.getElementById('himResult').disabled = true;
-        document.getElementById('biolResult').disabled = true;
-
-        document.getElementById('b1').disabled = false;
-        document.getElementById('b2').disabled = false;
-        document.getElementById('b3').disabled = false;
-        document.getElementById('langResult').disabled = false;
+        certResult.disabled = true;
+        mathResult.disabled = true;
+        physResult.disabled = true;
+        langResult.disabled = true;
+        biolResult.disabled = true;
+        himResult.disabled = true;
+        englResult.disabled = true;
+        buttonSave.disabled = true;
     }
 
+    if (value == 'mathphys') {
+
+        certResult.style.display = 'block';
+        langResult.style.display = 'block';
+        mathResult.style.display = 'block';
+        physResult.style.display = 'block';
+
+        biolResult.style.display = 'none';
+        himResult.style.display = 'none';
+        englResult.style.display = 'none';
+
+        buttonSave.style.display = 'block';
+        buttonSave.disabled = false;
+    }
+
+    if (value == 'himbio') {
+        certResult.style.display = 'block';
+        langResult.style.display = 'block';
+        biolResult.style.display = 'block';
+        himResult.style.display = 'block';
+
+        mathResult.style.display = 'none';
+        physResult.style.display = 'none';
+        englResult.style.display = 'none';
+
+        buttonSave.style.display = 'block';
+        buttonSave.disabled = false;
+
+    }
+
+    if (value == 'mathlang') {
+        certResult.style.display = 'block';
+        langResult.style.display = 'block';
+        mathResult.style.display = 'block';
+        englResult.style.display = 'block';
+
+        biolResult.style.display = 'none';
+        himResult.style.display = 'none';
+        physResult.style.display = 'none';
+
+        buttonSave.style.display = 'block';
+        buttonSave.disabled = false;
+
+    }
 }
+
 function onLoad() {
-    document.getElementById('mathResult').disabled = true;
-    document.getElementById('physResult').disabled = true;
-    document.getElementById('langResult').disabled = true;
-    document.getElementById('himResult').disabled = true;
-    document.getElementById('biolResult').disabled = true;
-    document.getElementById('englResult').disabled = true;
-}
 
-function onButton() {
-    document.getElementById('mathResult').disabled = false;
-    document.getElementById('physResult').disabled = false;
-    document.getElementById('langResult').disabled = false;
-    document.getElementById('himResult').disabled = false;
-    document.getElementById('biolResult').disabled = false;
-    document.getElementById('englResult').disabled = false;
+    var certResult = document.getElementById('cert');
+    var mathResult = document.getElementById('math');
+    var physResult = document.getElementById('phys');
+    var langResult = document.getElementById('lang');
+    var biolResult = document.getElementById('biol');
+    var himResult = document.getElementById('him');
+    var englResult = document.getElementById('engl');
+    var buttonSave = document.getElementById('buttonSave');
+    var buttonBack = document.getElementById('buttonBack');
+    var buttonCancel = document.getElementById('buttonCancel');
+
+    certResult.style.display = 'none';
+    langResult.style.display = 'none';
+    mathResult.style.display = 'none';
+    physResult.style.display = 'none';
+    englResult.style.display = 'none';
+    biolResult.style.display = 'none';
+    himResult.style.display = 'none';
+    buttonSave.disabled = true;
+    buttonBack.style.display = 'block';
+    buttonBack.disabled = false
+    buttonCancel.style.display = 'block';
+    buttonCancel.disabled = false;
 }

@@ -77,21 +77,25 @@ public class UserController {
 
     @RequestMapping(value = {"/", "/welcome"}, method = RequestMethod.GET)
     public String welcome(Model model) {
+
         return "welcome";
     }
 
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
     public String admin(Model model) {
+
         return "admin";
     }
 
     @RequestMapping(value = "/select", method = RequestMethod.GET)
     public String selectRoleForAdmin(Model model) {
+
         return "selectAdminRole";
     }
 
     @RequestMapping(value = "/main", method = RequestMethod.GET)
     public String redirectToUserMode(Model model) {
+
         return "main";
     }
 

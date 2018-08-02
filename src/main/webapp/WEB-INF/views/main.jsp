@@ -24,31 +24,33 @@
 
 <div>
 
-<div class="container">
+    <div class="container">
 
-    <c:if test="${pageContext.request.userPrincipal.name != null}">
-        <form id="logoutForm" method="POST" action="${contextPath}/logout">
-            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+        <c:if test="${pageContext.request.userPrincipal.name != null}">
+            <form id="logoutForm" method="POST" action="${contextPath}/logout">
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+            </form>
+
+            <h2>Welcome ${pageContext.request.userPrincipal.name} | <a onclick="document.forms['logoutForm'].submit()"
+                                                                       class="btn btn-danger">Logout</a>
+            </h2>
+        </c:if>
+
+        <c:if test="${pageContext.request.userPrincipal.name eq 'meleschenya1997@gmail.com'}">
+            <form action="/select" method="get" class="form-signin">
+                <button type="submit" style="font-weight: bold;" class="btn btn-lg btn-primary btn-block">SELECT MODE
+                </button>
+            </form>
+        </c:if>
+
+        <form action="/goToRegistration" method="get" class="form-signin">
+            <input type="submit" value="Edit user info" class="btn btn-lg btn-primary btn-block">
         </form>
 
-        <h2>Welcome ${pageContext.request.userPrincipal.name} | <a onclick="document.forms['logoutForm'].submit()"
-                                                                   class="btn btn-danger">Logout</a>
-        </h2>
-    </c:if>
-
-    <c:if test="${pageContext.request.userPrincipal.name eq 'meleschenya1997@gmail.com'}">
-        <form action="/select" method="get" class="form-signin">
-            <button type="submit" style="font-weight: bold;" class="btn btn-lg btn-primary btn-block">SELECT MODE
-            </button>
-        </form>
-    </c:if>
-
-    <form action="/goToRegistration" method="get" class="form-signin">
-        <input type="submit" value="Continue registration" class="btn btn-lg btn-primary btn-block">
-    </form>
-
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="${contextPath}/resources/js/bootstrap.min.js"></script>
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="${contextPath}/resources/js/bootstrap.min.js"></script>
+
 </body>
 </html>

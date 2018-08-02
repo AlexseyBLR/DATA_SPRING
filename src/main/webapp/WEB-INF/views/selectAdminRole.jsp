@@ -6,6 +6,17 @@
 
 <html>
 <head>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+
     <title>Select user role</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,16 +30,43 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 </head>
 <body>
-
 <div>
-    <form action="/main" method="get" class="form-signin">
-        <button type="submit" style="font-weight: bold;" class="btn btn-lg btn-primary btn-block">USER MODE</button>
-    </form>
+    <div class="container">
+        <c:if test="${pageContext.request.userPrincipal.name != null}">
+            <form id="logoutForm" method="POST" action="${contextPath}/logout">
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+            </form>
 
-    <form action="/admin" method="get" class="form-signin">
-        <button type="submit" style="font-weight: bold;" class="btn btn-lg btn-primary btn-block">ADMIN MODE</button>
-    </form>
+            <h2>Welcome ${pageContext.request.userPrincipal.name} | <a onclick="document.forms['logoutForm'].submit()"
+                                                                       class="btn btn-danger">Logout</a>
+            </h2>
+        </c:if>
 
+        <div class="form-signin">
+            <ul class="nav navbar-nav">
+
+
+                <li class="dropdown">
+                    <a id="drop1" href="#" style="font-size: 170%;" class="dropdown-toggle" data-toggle="dropdown">
+                        Select mode
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+
+                        <!--ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc-->
+                        <li><a href="http://localhost:8080/main?" class="faculty" style="font-weight: bold">User</a></li>
+                        <li><a href="http://localhost:8080/admin?" class="faculty" style="font-weight: bold">Admin</a></li>
+                    </ul>
+                </li>
+
+
+            </ul>
+        </div>
+
+    </div>
 </div>
+
+
+
 </body>
 </html>
