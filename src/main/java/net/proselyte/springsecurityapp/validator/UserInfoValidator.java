@@ -20,7 +20,7 @@ public class UserInfoValidator extends AbstractValidator implements Validator, M
     private static final Pattern AGE_PATTERN = Pattern.compile(AGE_REGULAR_EXPRESSION);
     private static final Pattern NAME_PATTERN = Pattern.compile(NAME_REGULAR_EXPRESSION);
 
-    //////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////
 
 
     @Override

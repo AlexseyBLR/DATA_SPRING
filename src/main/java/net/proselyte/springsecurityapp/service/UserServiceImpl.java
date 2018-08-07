@@ -12,12 +12,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-/**
- * Implementation of {@link UserService} interface.
- *
- * @author Eugene Suleimanov
- * @version 1.0
- */
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -30,6 +24,8 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
+
+//////////////////////////////////////////////////////////////////////////////////////
 
     @Override
     public void save(User user) {
