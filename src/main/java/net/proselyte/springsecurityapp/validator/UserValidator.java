@@ -20,7 +20,7 @@ public class UserValidator extends AbstractValidator implements Validator, MyVal
 
 //////////////////////////////////////////////////////////////////////////////////////
 
-    
+
     @Autowired
     private UserService userService;
 
