@@ -19,7 +19,6 @@ public class UserValidator extends AbstractValidator implements Validator, MyVal
     public static final Pattern PASSWORD_PATTERN = Pattern.compile(PASSWORD_REG_EXP);
 
 //////////////////////////////////////////////////////////////////////////////////////
-
     
     @Autowired
     private UserService userService;
