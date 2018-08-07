@@ -14,6 +14,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 /**
  * Controller for {@link net.proselyte.springsecurityapp.model.User}'s pages.
@@ -23,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 
 @Controller
+@SessionAttributes("userInfo")
 public class UserController {
 
     @Autowired
@@ -94,8 +96,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/main", method = RequestMethod.GET)
-    public String redirectToUserMode(Model model) {
-
+    public String redirectToUserMode(Model model, @ModelAttribute("userInfo") User user) {
         return "main";
     }
 
@@ -126,7 +127,6 @@ public class UserController {
             return "lastRegistration";
         }
         userService.editUserResult(newUserSecondRegistration.getUsername(), newUserSecondRegistration);
-        model.addAttribute("userInfo", newUserSecondRegistration);
         return "main";
     }
 
