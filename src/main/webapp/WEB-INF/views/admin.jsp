@@ -40,6 +40,12 @@
                 </button>
             </form>
         </div>
+        <div class="form-signin">
+            <form action="/admin/users" method="get">
+                <input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>
+                <button type="submit" style="font-weight: bold;" class="btn btn-lg btn-primary btn-block">Show users</button>
+            </form>
+        </div>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
