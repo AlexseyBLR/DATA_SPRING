@@ -23,7 +23,6 @@
 
 
 <div>
-    ${userInfo}
     <div class="container">
 
         <c:if test="${pageContext.request.userPrincipal.name != null}">

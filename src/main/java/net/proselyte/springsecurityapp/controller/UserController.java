@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 
 @Controller
-@SessionAttributes("userInfo")
 public class UserController {
 
     @Autowired
@@ -93,7 +92,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/main", method = RequestMethod.GET)
-    public String redirectToUserMode(Model model, @ModelAttribute("userInfo") User user) {
+    public String redirectToUserMode(Model model) {
         return "main";
     }
 

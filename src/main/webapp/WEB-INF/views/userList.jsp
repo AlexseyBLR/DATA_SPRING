@@ -60,7 +60,6 @@
         <tbody>
         <c:forEach items="${users}" var="user">
             <tr name="entityRow">
-                <c:if test="${!(user.firstname eq 'firstname')}">
                     <td>${user.firstname}</td>
                     <td>${user.lastname}</td>
                     <td>${user.patronymic}</td>
@@ -71,7 +70,6 @@
                     <form>
                         <input type="hidden" name="selectedEntitySingleId" value="${user.username}">
                     </form>
-                </c:if>
             </tr>
         </c:forEach>
         </tbody>
