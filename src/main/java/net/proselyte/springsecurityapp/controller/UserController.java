@@ -16,12 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-/**
- * Controller for {@link net.proselyte.springsecurityapp.model.User}'s pages.
- *
- * @author Eugene Suleimanov
- * @version 1.0
- */
 
 @Controller
 @SessionAttributes("userInfo")
@@ -41,6 +35,9 @@ public class UserController {
 
     @Autowired
     private UserResultValidator userResultValidator;
+
+//////////////////////////////////////////////////////////////////////////////////////
+
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public String registration(Model model) {

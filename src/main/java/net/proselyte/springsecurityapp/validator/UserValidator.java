@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
 @Component
 public class UserValidator extends AbstractValidator implements Validator, MyValidator {
 
-    static final String EMAIL_REGULAR_EXPRESSION = "^([a-z0-9_-]+\\.)*[a-z0-9_-]+@[a-z0-9_-]+(\\.[a-z0-9_-]+)*\\.[a-z]{2,6}$";
+    static final String EMAIL_REGULAR_EXPRESSION = ".+@.+\\..+";
     static final String PASSWORD_REG_EXP = "[A-Za-z0-9!@#$%^&*]{8,}";
 
     public static final Pattern EMAIL_PATTERN = Pattern.compile(EMAIL_REGULAR_EXPRESSION);

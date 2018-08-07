@@ -14,6 +14,7 @@ public class UserResultValidator extends AbstractValidator implements Validator,
     private static final String RESULT_REGULAR_EXPRESSION = "^\\d{1,2}$|^100$";
     private static final Pattern RESULT_PATTERN = Pattern.compile(RESULT_REGULAR_EXPRESSION);
 
+//////////////////////////////////////////////////////////////////////////////////////
 
     @Override
     public boolean supports(Class<?> aClass) {
