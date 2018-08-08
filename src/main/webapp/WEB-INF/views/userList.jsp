@@ -20,12 +20,7 @@
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
             crossorigin="anonymous"></script>
     <style>
-        /*table{}*/
-        /*tbody tr.selected{*/
-            /*background: #1b6d85;*/
-            /*color: seashell;*/
-        /*}*/
-        table tr.marked{
+        table tr.marked {
             background-color: #1b6d85;
             color: snow;
         }
@@ -35,8 +30,8 @@
 <body>
 
 <script>
-    $(document).ready(function(){
-        $('table tr').on('click', function(e) {
+    $(document).ready(function () {
+        $('table tr').on('click', function (e) {
             $('table tr').removeClass('marked');
             $(this).addClass('marked');
         });
@@ -60,16 +55,16 @@
         <tbody>
         <c:forEach items="${users}" var="user">
             <tr name="entityRow">
-                    <td>${user.firstname}</td>
-                    <td>${user.lastname}</td>
-                    <td>${user.patronymic}</td>
-                    <td>${user.username}</td>
-                    <td>${user.age}</td>
-                    <td>${user.sex}</td>
-                    <td>${user.profile}</td>
-                    <form>
-                        <input type="hidden" name="selectedEntitySingleId" value="${user.username}">
-                    </form>
+                <td>${user.firstname}</td>
+                <td>${user.lastname}</td>
+                <td>${user.patronymic}</td>
+                <td>${user.username}</td>
+                <td>${user.age}</td>
+                <td>${user.sex}</td>
+                <td>${user.profile}</td>
+                <form>
+                    <input type="hidden" name="selectedEntitySingleId" value="${user.username}">
+                </form>
             </tr>
         </c:forEach>
         </tbody>
@@ -82,7 +77,8 @@
                 <!-- Button to modal -->
                 <div>
                     <input type="hidden" name="selectedEntitySingleId" value="-1">
-                    <input type="submit" id="launchModalDelete" class="btn btn-danger" value="delete" data-toggle="modal"
+                    <input type="submit" id="launchModalDelete" class="btn btn-danger" value="delete"
+                           data-toggle="modal"
                            data-target="#exampleModal"/>
                 </div>
 
@@ -104,7 +100,7 @@
                                 <form action="/admin/delete" method="post">
                                     <input type="hidden" name="selectedEntitySingleId" value="-1">
                                     <input type="submit" class="btn btn-primary" value="Delete">
-                                    <input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>
+                                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                                 </form>
 
@@ -118,10 +114,11 @@
     <br/>
 
     <form action="/admin">
-    <button type="submit" class="btn btn-group-lg btn-primary">Back</button>
+        <button type="submit" class="btn btn-group-lg btn-primary">Back</button>
     </form>
 
     <script src="/resources/myJSFunctions/select-row-plugin.js"></script>
 
+</div>
 </body>
 </html>

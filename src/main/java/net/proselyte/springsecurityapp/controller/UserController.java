@@ -11,10 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
 
 
 @Controller
@@ -97,8 +94,8 @@ public class UserController {
     }
 
     @RequestMapping(value = "/goToRegistration", method = RequestMethod.GET)
-    public String goToRegistration(ModelMap modelMap) {
-        modelMap.addAttribute("newUserFirstRegistration", new User());
+    public String goToRegistration(ModelMap modelMap, @RequestParam("username") String username) {
+        modelMap.addAttribute("newUserFirstRegistration", userService.findByUsername(username));
         return "secondRegistration";
     }
 
@@ -109,7 +106,6 @@ public class UserController {
         if (bindingResult.hasErrors()) {
             return "secondRegistration";
         }
-
         userService.editUserInfo(newUserFirstRegistration.getUsername(), newUserFirstRegistration);
         model.addAttribute("newUserSecondRegistration", newUserFirstRegistration);
         return "lastRegistration";

@@ -10,7 +10,6 @@
 <head>
 
     <style>
-        /* Popup container - can be anything you want */
         .popup {
             position: relative;
             display: inline-block;
@@ -21,7 +20,6 @@
             user-select: none;
         }
 
-        /* The actual popup */
         .popup .popuptext {
             visibility: hidden;
             width: 160px;
@@ -37,7 +35,6 @@
             margin-left: -80px;
         }
 
-        /* Popup arrow */
         .popup .popuptext::after {
             content: "";
             position: absolute;
@@ -49,14 +46,12 @@
             border-color: #555 transparent transparent transparent;
         }
 
-        /* Toggle this class - hide and show the popup */
         .popup .show {
             visibility: visible;
             -webkit-animation: fadeIn 1s;
             animation: fadeIn 1s;
         }
 
-        /* Add animation (fade in the popup) */
         @-webkit-keyframes fadeIn {
             from {
                 opacity: 0;
@@ -99,11 +94,10 @@
 
         <input type="hidden" value="${pageContext.request.userPrincipal.name}" name="username"/>
 
-
         <spring:bind path="profile">
             <div class="form-group ${status.error ? 'has-error' : ''}">
                 <label>Select your subject</label>
-                <form:select path="profile" class="form-control" id="profile" onchange="onChange()">
+                <form:select path="profile" class="form-control" id="profile" onchange="onChange()" value="${newUserSecondRegistration.profile}">
                     <option value="chose" id="chose">Chose speciality...</option>
                     <option value="mathphys" id="mathphys">Physics-mathematics</option>
                     <option value="himbio">Chemistry-biology</option>
@@ -117,7 +111,7 @@
                 <label>Certificate result</label>
                 <div class="form-group ${status.error ? 'has-error' : ''}">
                     <form:input cssStyle="margin-top: -1%;" type="text" path="certResult" class="form-control"
-                                autofocus="true" id="certResult"/>
+                                autofocus="true" id="certResult" value="${newUserSecondRegistration.certResult}"/>
                     <form:errors path="certResult">
                     </form:errors>
                 </div>
@@ -129,7 +123,7 @@
                 <label>Language result</label>
                 <div class="form-group ${status.error ? 'has-error' : ''}">
                     <form:input cssStyle="margin-top: -1%;" type="text" path="langResult" class="form-control"
-                                autofocus="true" id="langResult"/>
+                                autofocus="true" id="langResult" value="${newUserSecondRegistration.langResult}"/>
                     <form:errors path="langResult">
                     </form:errors>
                 </div>
@@ -142,7 +136,7 @@
                 <label>Mathematics result</label>
                 <div class="form-group ${status.error ? 'has-error' : ''}">
                     <form:input cssStyle="margin-top: -1%;" type="text" path="mathResult" class="form-control"
-                                autofocus="true" id="mathResult"/>
+                                autofocus="true" id="mathResult" value="${newUserSecondRegistration.mathResult}"/>
                     <form:errors path="mathResult">
                     </form:errors>
                 </div>
@@ -154,7 +148,7 @@
                 <label>Physics result</label>
                 <div class="form-group ${status.error ? 'has-error' : ''}">
                     <form:input cssStyle="margin-top: -1%;" type="text" path="physResult" class="form-control"
-                                autofocus="true" id="physResult"/>
+                                autofocus="true" id="physResult" value="${newUserSecondRegistration.physResult}"/>
                     <form:errors path="physResult">
                     </form:errors>
                 </div>
@@ -166,7 +160,7 @@
                 <label>Chemistry result</label>
                 <div class="form-group ${status.error ? 'has-error' : ''}" id="12">
                     <form:input cssStyle="margin-top: -1%;" type="text" path="himResult" class="form-control"
-                                autofocus="true" id="himResult"/>
+                                autofocus="true" id="himResult" value="${newUserSecondRegistration.himResult}"/>
                     <form:errors path="himResult">
                     </form:errors>
                 </div>
@@ -178,19 +172,18 @@
                 <label>Biology result</label>
                 <div class="form-group ${status.error ? 'has-error' : ''}">
                     <form:input cssStyle="margin-top: -1%;" type="text" path="biolResult" class="form-control"
-                                autofocus="true" id="biolResult"/>
+                                autofocus="true" id="biolResult" value="${newUserSecondRegistration.biolResult}"/>
                     <form:errors path="biolResult">
                     </form:errors>
                 </div>
             </spring:bind>
         </div>
-
         <div id="engl">
             <spring:bind path="englResult">
                 <label>English result</label>
                 <div class="form-group ${status.error ? 'has-error' : ''}">
                     <form:input cssStyle="margin-top: -1%;" type="text" path="englResult" class="form-control"
-                                autofocus="true" id="englResult"/>
+                                autofocus="true" id="englResult" value="${newUserSecondRegistration.englResult}"/>
                     <form:errors path="englResult">
                     </form:errors>
                 </div>
@@ -200,9 +193,6 @@
         <div>
             <form action="/registeredLast" method="post">
                 <input id="buttonSave" type="submit" value="Save" class="btn btn-lg btn-primary btn-block"/>
-            </form>
-            <form action="/goToRegistration" method="get">
-                <input id="buttonBack" type="submit" value="Back" class="btn btn-lg btn-warning btn-block"/>
             </form>
             <form action="/main" method="get">
                 <input id="buttonCancel" type="submit" value="Cancel" class="btn btn-lg btn-danger btn-block"/>

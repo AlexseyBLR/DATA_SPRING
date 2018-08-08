@@ -35,6 +35,7 @@
             </h2>
         </c:if>
 
+
         <c:if test="${pageContext.request.userPrincipal.name eq 'meleschenya1997@gmail.com'}">
             <form action="/select" method="get" class="form-signin">
                 <button type="submit" style="font-weight: bold;" class="btn btn-lg btn-primary btn-block">SELECT MODE
@@ -43,6 +44,7 @@
         </c:if>
 
         <form action="/goToRegistration" method="get" class="form-signin">
+            <input type="hidden" name="username" value="${pageContext.request.userPrincipal.name}"/>
             <input type="submit" value="Edit user info" class="btn btn-lg btn-primary btn-block">
         </form>
 
