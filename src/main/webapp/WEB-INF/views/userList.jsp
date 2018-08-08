@@ -26,19 +26,17 @@
         }
     </style>
 
+    <script>
+        $(document).ready(function () {
+            $('table tr').on('click', function (e) {
+                $('table tr').removeClass('marked');
+                $(this).addClass('marked');
+            });
+        });
+    </script>
+
 </head>
 <body>
-
-<script>
-    $(document).ready(function () {
-        $('table tr').on('click', function (e) {
-            $('table tr').removeClass('marked');
-            $(this).addClass('marked');
-        });
-    });
-</script>
-
-
 <div class="table-responsive">
     <table id="entityTable" class="table">
         <thead class="thead-inverse">
@@ -72,53 +70,54 @@
 
 
     <div id="clickedRowButtons" cellspacing="0" cellpadding="0">
-        <tr>
-            <td>
-                <!-- Button to modal -->
-                <div>
-                    <input type="hidden" name="selectedEntitySingleId" value="-1">
-                    <input type="submit" id="launchModalDelete" class="btn btn-danger" value="delete"
-                           data-toggle="modal"
-                           data-target="#exampleModal"/>
-                </div>
 
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModal">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                                <h3 class="modal-title" id="exampleModalLabel">Confirm deleting</h3>
-                            </div>
-                            <div class="modal-body">
-                                <h5>Are you sure?</h5>
-                            </div>
-                            <div class="modal-footer">
 
-                                <form action="/admin/delete" method="post">
-                                    <input type="hidden" name="selectedEntitySingleId" value="-1">
-                                    <input type="submit" class="btn btn-primary" value="Delete">
-                                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                </form>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h3 class="modal-title" id="exampleModalLabel">Confirm deleting</h3>
+                    </div>
+                    <div class="modal-body">
+                        <h5>Are you sure?</h5>
+                    </div>
+                    <div class="modal-footer">
 
-                            </div>
-                        </div>
+                        <form action="/admin/delete" method="post">
+                            <input type="hidden" name="selectedEntitySingleId" value="-1">
+                            <input type="submit" class="btn btn-primary" value="Delete">
+                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        </form>
+
                     </div>
                 </div>
-            </td>
-        </tr>
+            </div>
+        </div>
     </div>
-    <br/>
-
-    <form action="/admin">
-        <button type="submit" class="btn btn-group-lg btn-primary">Back</button>
-    </form>
-
-    <script src="/resources/myJSFunctions/select-row-plugin.js"></script>
-
 </div>
+
+<div style="margin-left: 2%;">
+    <div>
+        <input type="hidden" name="selectedEntitySingleId" value="-1">
+        <input type="submit" id="launchModalDelete" class="btn btn-danger" value="delete"
+               data-toggle="modal"
+               data-target="#exampleModal"/>
+    </div>
+    <br>
+    <div>
+        <form action="/admin">
+            <button type="submit" class="btn btn-primary">Back</button>
+        </form>
+    </div>
+</div>
+
+
+<script src="/resources/myJSFunctions/select-row-plugin.js"></script>
+
 </body>
 </html>
