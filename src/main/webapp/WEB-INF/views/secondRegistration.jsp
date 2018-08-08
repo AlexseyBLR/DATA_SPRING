@@ -30,13 +30,11 @@
         <h2 class="form-signin-heading" style="width: 310px;">Add info about yourself</h2>
         <input type="hidden" value="${pageContext.request.userPrincipal.name}" name="username"/>
 
-        ${newUserSecondRegistration}
-
         <spring:bind path="firstname">
             <label>First name</label>
             <div class="form-group ${status.error ? 'has-error' : ''}">
                 <form:input type="text" path="firstname" class="form-control" placeholder="First name"
-                            autofocus="true"></form:input>
+                            autofocus="true" value="${userInfo.firstname}"></form:input>
                 <form:errors path="firstname"></form:errors>
             </div>
         </spring:bind>
@@ -44,7 +42,7 @@
             <label>Last name</label>
             <div class="form-group ${status.error ? 'has-error' : ''}">
                 <form:input type="text" path="lastname" class="form-control" placeholder="Last name"
-                            autofocus="true"/>
+                            autofocus="true" value="${userInfo.lastname}"/>
                 <form:errors path="lastname">
                 </form:errors>
             </div>
@@ -53,7 +51,7 @@
             <label>Patronymic</label>
             <div class="form-group ${status.error ? 'has-error' : ''}">
                 <form:input type="text" path="patronymic" class="form-control" placeholder="Patronymic"
-                            autofocus="true"/>
+                            autofocus="true" value="${userInfo.patronymic}"/>
                 <form:errors path="patronymic">
                 </form:errors>
             </div>
@@ -62,7 +60,7 @@
             <label>Age</label>
             <div class="form-group ${status.error ? 'has-error' : ''}">
                 <form:input type="text" path="age" class="form-control" placeholder="Age"
-                            autofocus="true"/>
+                            autofocus="true" value="${userInfo.age}"/>
                 <form:errors path="age">
                 </form:errors>
             </div>
@@ -70,7 +68,7 @@
         <spring:bind path="sex">
             <div class="form-group ${status.error ? 'has-error' : ''}">
                 <label>Select your sex:</label>
-                <form:select path="sex" class="form-control">
+                <form:select path="sex" class="form-control" value="${userInfo.sex}">
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                 </form:select>
