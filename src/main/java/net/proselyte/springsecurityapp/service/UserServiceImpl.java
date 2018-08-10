@@ -47,27 +47,28 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void editUserInfo(String username, User oldUser) {
+    public void editUserInfo(String username, User newUser) {
         User userForUpdate = userDao.findUserByUsername(username);
-        userForUpdate.setFirstname(oldUser.getFirstname());
-        userForUpdate.setLastname(oldUser.getLastname());
-        userForUpdate.setPatronymic(oldUser.getPatronymic());
-        userForUpdate.setAge(oldUser.getAge());
-        userForUpdate.setSex(oldUser.getSex());
+        userForUpdate.setFirstname(newUser.getFirstname());
+        userForUpdate.setLastname(newUser.getLastname());
+        userForUpdate.setPatronymic(newUser.getPatronymic());
+        userForUpdate.setAge(newUser.getAge());
+        userForUpdate.setSex(newUser.getSex());
+        userForUpdate.setSpeciality(newUser.getSpeciality());
         userDao.saveAndFlush(userForUpdate);
     }
 
     @Override
-    public void editUserResult(String username, User oldUser) {
+    public void editUserResult(String username, User newUser) {
         User userForUpdate = userDao.findUserByUsername(username);
-        userForUpdate.setProfile(oldUser.getProfile());
-        userForUpdate.setCertResult(oldUser.getCertResult());
-        userForUpdate.setMathResult(oldUser.getMathResult());
-        userForUpdate.setPhysResult(oldUser.getPhysResult());
-        userForUpdate.setLangResult(oldUser.getLangResult());
-        userForUpdate.setHimResult(oldUser.getHimResult());
-        userForUpdate.setBiolResult(oldUser.getBiolResult());
-        userForUpdate.setEnglResult(oldUser.getEnglResult());
+        userForUpdate.setProfile(newUser.getProfile());
+        userForUpdate.setCertResult(newUser.getCertResult());
+        userForUpdate.setMathResult(newUser.getMathResult());
+        userForUpdate.setPhysResult(newUser.getPhysResult());
+        userForUpdate.setLangResult(newUser.getLangResult());
+        userForUpdate.setHimResult(newUser.getHimResult());
+        userForUpdate.setBiolResult(newUser.getBiolResult());
+        userForUpdate.setEnglResult(newUser.getEnglResult());
         userDao.saveAndFlush(userForUpdate);
     }
 
