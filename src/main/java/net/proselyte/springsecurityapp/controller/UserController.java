@@ -1,7 +1,10 @@
 package net.proselyte.springsecurityapp.controller;
 
+import net.proselyte.springsecurityapp.model.Speciality;
 import net.proselyte.springsecurityapp.model.User;
+import net.proselyte.springsecurityapp.model.ValueEntity;
 import net.proselyte.springsecurityapp.service.SecurityService;
+import net.proselyte.springsecurityapp.service.SpecialityService;
 import net.proselyte.springsecurityapp.service.UserService;
 import net.proselyte.springsecurityapp.validator.UserInfoValidator;
 import net.proselyte.springsecurityapp.validator.UserResultValidator;
@@ -31,6 +34,9 @@ public class UserController {
 
     @Autowired
     private UserResultValidator userResultValidator;
+
+    @Autowired
+    private SpecialityService specialityService;
 
 //////////////////////////////////////////////////////////////////////////////////////
 
@@ -119,6 +125,24 @@ public class UserController {
             return "lastRegistration";
         }
         userService.editUserResult(newUserSecondRegistration.getUsername(), newUserSecondRegistration);
+        return "main";
+    }
+
+    @RequestMapping(value = "/request", method = RequestMethod.POST)
+    public String goToRequestPage(ModelMap modelMap){
+            modelMap.addAttribute("specialityValue", new ValueEntity());
+            modelMap.addAttribute("specialities", specialityService.getAll());
+        return "sendRequest";
+    }
+
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public String register(ModelMap modelMap, @RequestParam("username") String username,
+                           @RequestParam("specialityValue") String specialityID){
+        int ID = Integer.parseInt(specialityID);
+        User user = userService.findByUsername(username);
+        Speciality speciality = specialityService.findByID(ID);
+        user.setSpeciality(speciality);
+        userService.editUserInfo(username, user);
         return "main";
     }
 

@@ -43,10 +43,14 @@
             </form>
         </c:if>
 
-        <form action="/goToRegistration" method="get" class="form-signin">
-            <input type="hidden" name="username" value="${pageContext.request.userPrincipal.name}"/>
-            <input type="submit" value="Edit user info" class="btn btn-lg btn-primary btn-block">
-        </form>
+            <form action="/request" method="post" class="form-signin">
+                <input type="submit" value="Create request" class="btn btn-lg btn-primary btn-block">
+            </form>
+            <form action="/goToRegistration" method="get" class="form-signin">
+                <input type="hidden" name="username" value="${pageContext.request.userPrincipal.name}"/>
+                <input type="submit" value="Edit user info" class="btn btn-lg btn-primary btn-block">
+            </form>
+
 
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>

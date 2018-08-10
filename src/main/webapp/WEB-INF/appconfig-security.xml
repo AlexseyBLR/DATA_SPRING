@@ -17,11 +17,16 @@
         <intercept-url pattern="/goToRegistration" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"/>
         <intercept-url pattern="/registered" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"/>
         <intercept-url pattern="/registeredLast" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"/>
+        <intercept-url pattern="/request" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"/>
+        <intercept-url pattern="/register" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"/>
+
 
         <form-login login-page="/login" default-target-url="/welcome" authentication-failure-url="/login?error"
                     username-parameter="username" password-parameter="password"/>
 
         <logout logout-success-url="/login?logout"/>
+
+        <csrf disabled="true"/>
     </http>
 
     <authentication-manager alias="authenticationManager">
